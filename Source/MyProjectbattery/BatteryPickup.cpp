@@ -19,7 +19,7 @@ void ABatteryPickup::WasCollected_Implementation()
 	//Destroy the battery
 	Destroy();
 }
-//returns batteyr power
+//returns battery power
 float ABatteryPickup::GetPower()
 {
 	return this->BatteryPower;

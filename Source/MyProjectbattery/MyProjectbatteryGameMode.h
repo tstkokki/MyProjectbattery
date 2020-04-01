@@ -31,6 +31,11 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Power")
 	float GetPowerToWin() { return this->PowerToWin; };
 
+	//returns power needed to for the HUD
+	UFUNCTION(BlueprintPure, Category = "Objective")
+		int GetScoreToWin() { return this->ScoreToWin; };
+
+
 	virtual void BeginPlay() override;
 
 	//Returns the current playing state
@@ -48,6 +53,11 @@ protected:
 	// the power needed to win the game
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Power", Meta = (BlueprintProtected = "true"))
 	float PowerToWin;
+
+	// the power needed to win the game
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Objective", Meta = (BlueprintProtected = "true"))
+		int ScoreToWin;
+
 
 	//the widget class to use for our HUD screen
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Power", Meta = (BlueprintProtected = "true"))

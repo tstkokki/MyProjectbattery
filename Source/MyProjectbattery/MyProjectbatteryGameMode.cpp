@@ -41,8 +41,8 @@ void AMyProjectbatteryGameMode::Tick(float DeltaTime)
 				break;
 		}*/
 
-		// if our power is greater than needed to win, set the state to won
-		if (MyCharacter->GetCurrentPower() > PowerToWin)
+		// if our Score is greater than needed to win, set the state to won
+		if (MyCharacter->GetCurrentScore() >= ScoreToWin)
 		{
 			SetCurrentState(EBatteryPlayState::EWon);
 		}
@@ -83,7 +83,7 @@ void AMyProjectbatteryGameMode::BeginPlay()
 	AMyProjectbatteryCharacter* MyCharacter = Cast<AMyProjectbatteryCharacter>(UGameplayStatics::GetPlayerPawn(this, 0));
 	if (MyCharacter)
 	{
-		PowerToWin = (MyCharacter->GetInitialPower()) * 1.25f;
+		ScoreToWin = (MyCharacter->GetInitialScore()) +10;
 	}
 
 	if (HUDWidgetClass != nullptr)

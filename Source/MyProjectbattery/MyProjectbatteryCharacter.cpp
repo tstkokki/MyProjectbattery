@@ -11,6 +11,7 @@
 #include "Components/SphereComponent.h"
 #include "Pickup.h"
 #include "BatteryPickup.h"
+#include "ObjectivePickup.h"
 
 //////////////////////////////////////////////////////////////////////////
 // AMyProjectbatteryCharacter
@@ -87,6 +88,21 @@ void AMyProjectbatteryCharacter::UpdatePower(float PowerChange)
 		PowerChangeEffect();
 }
 
+int AMyProjectbatteryCharacter::GetInitialScore()
+{
+	return this->InitialScore;
+}
+
+
+int AMyProjectbatteryCharacter::GetCurrentScore()
+{
+	return this->CurrentScore;
+}
+void AMyProjectbatteryCharacter::UpdateScore(int ScoreChange)
+{
+	//change score
+	this->CurrentScore += ScoreChange;
+}
 //////////////////////////////////////////////////////////////////////////
 // Input
 
@@ -141,6 +157,11 @@ void AMyProjectbatteryCharacter::CollectPickups()
 			if (TestBattery)
 			{
 				CollectedPower += TestBattery->GetPower();
+			}
+
+			AObjectivePickup* const TestObjective = Cast<AObjectivePickup>(TestPickup);
+			if (TestObjective) {
+				this->UpdateScore(TestObjective->GetScore());
 			}
 
 			// call the pickup's WasCollected function

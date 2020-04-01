@@ -46,6 +46,18 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Power")
 	void UpdatePower(float PowerChange);
 
+	// Accessor function for initial score
+	UFUNCTION(BlueprintPure, Category = "Objective")
+		int GetInitialScore();
+
+	//Accessor function for current score
+	UFUNCTION(BlueprintPure, Category = "Objective")
+		int GetCurrentScore();
+
+	UFUNCTION(BlueprintCallable, Category = "Objective")
+		void UpdateScore(int ScoreChange);
+
+
 
 protected:
 
@@ -89,6 +101,10 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Power", Meta = (BlueprintProtected = "true"))
 	float InitialPower;
 
+	// Initial power of the player at start
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Objective", Meta = (BlueprintProtected = "true"))
+		int InitialScore;
+
 	// multiplier for character speed
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Power", Meta = (BlueprintProtected = "true"))
 	float SpeedFactor;
@@ -113,5 +129,9 @@ private:
 	//current power of the player
 	UPROPERTY(VisibleAnywhere, Category = "Power")
 	float CurrentPower;
+
+	//current power of the player
+	UPROPERTY(VisibleAnywhere, Category = "Objective")
+		int CurrentScore;
 };
 
