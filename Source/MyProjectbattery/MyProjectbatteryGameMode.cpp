@@ -20,6 +20,7 @@ AMyProjectbatteryGameMode::AMyProjectbatteryGameMode()
 
 	//base decay rate
 	DecayRate = 0.01f;
+	PlayTime = 0.0f;
 
 	// set the ticking functionality to true
 	PrimaryActorTick.bCanEverTick = true;
@@ -34,12 +35,13 @@ void AMyProjectbatteryGameMode::Tick(float DeltaTime)
 	AMyProjectbatteryCharacter* MyCharacter = Cast<AMyProjectbatteryCharacter>(UGameplayStatics::GetPlayerPawn(this, 0));
 	if (MyCharacter)
 	{
-		/*switch (GetCurrentState())
+		switch (GetCurrentState())
 		{
-
+		case EBatteryPlayState::EPlaying:
+			this->PlayTime += DeltaTime;
 			default:
 				break;
-		}*/
+		}
 
 		// if our Score is greater than needed to win, set the state to won
 		if (MyCharacter->GetCurrentScore() >= ScoreToWin)
@@ -132,6 +134,7 @@ void AMyProjectbatteryGameMode::HandleNewState(EBatteryPlayState NewState)
 		{
 			Volume->SetSpawningActive(false);
 		}
+
 	}
 	break;
 	// if we've lost the game

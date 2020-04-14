@@ -50,6 +50,10 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Power", Meta = (BlueprintProtected = "true"))
 	float DecayRate;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Objective", Meta = (BlueprintProtected = "true"))
+	float PlayTime;
+
+
 	// the power needed to win the game
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Power", Meta = (BlueprintProtected = "true"))
 	float PowerToWin;
